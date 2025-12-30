@@ -1,16 +1,28 @@
-# This is a sample Python script.
-
-# Press Ctrl+F5 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
-
-
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press F9 to toggle the breakpoint.
+import os
+from src.data_preparation import prepare_data
+import pandas as pd
 
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+SRC_DIR = os.path.join(BASE_DIR, 'src')
+OUTPUT_DIR = os.path.join(BASE_DIR, 'outputs')
+DATA_DIR = os.path.join(BASE_DIR, 'data')
+DOC_DIR = os.path.join(BASE_DIR, 'docs', 'index.html')
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+
+RAW_DATA_PATH = os.path.join(DATA_DIR, 'raw', "dataset.csv")
+PROCESSED_DATA_PATH = os.path.join(DATA_DIR, 'processed', "processed.csv")
+
+DATA_PREPARATION_PATH = os.path.join(SRC_DIR, 'data_preparation.py',)
+FEATURE_ENGINEERING_PATH = os.path.join(SRC_DIR, 'feature_engineering.py',)
+CHURN_ANALYSIS_PATH = os.path.join(SRC_DIR, 'churn_analysis.py',)
+VISUALIZATION_PATH = os.path.join(SRC_DIR, 'visualization.py',)
+
+FIGURE_PATH = os.path.join( OUTPUT_DIR, 'figures')
+
+def main():
+    prepare_data(RAW_DATA_PATH, PROCESSED_DATA_PATH)
+
+
+if __name__ == "__main__":
+    main()
