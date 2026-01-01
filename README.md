@@ -72,10 +72,3 @@ Long-term customers churn less
 
 Services bundle affects retention
 
-🔮 Future Work
-
-Churn prediction (ML)
-
-Feature importance
-
-Retention strategy simulation
