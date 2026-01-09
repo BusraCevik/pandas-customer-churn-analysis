@@ -1,5 +1,6 @@
 import os
 from src.data_preparation import prepare_data
+from src.feature_engineering import create_feature_dataset
 import pandas as pd
 
 
@@ -11,7 +12,9 @@ DOC_DIR = os.path.join(BASE_DIR, 'docs', 'index.html')
 
 
 RAW_DATA_PATH = os.path.join(DATA_DIR, 'raw', "dataset.csv")
-PROCESSED_DATA_PATH = os.path.join(DATA_DIR, 'processed', "processed.csv")
+CLEANED_DATA_PATH = os.path.join(DATA_DIR, 'cleaned', "cleaned.csv")
+FEATURED_DATA_PATH = os.path.join(DATA_DIR, 'featured', "featured.csv")
+
 
 DATA_PREPARATION_PATH = os.path.join(SRC_DIR, 'data_preparation.py',)
 FEATURE_ENGINEERING_PATH = os.path.join(SRC_DIR, 'feature_engineering.py',)
@@ -21,7 +24,8 @@ VISUALIZATION_PATH = os.path.join(SRC_DIR, 'visualization.py',)
 FIGURE_PATH = os.path.join( OUTPUT_DIR, 'figures')
 
 def main():
-    prepare_data(RAW_DATA_PATH, PROCESSED_DATA_PATH)
+    prepare_data(RAW_DATA_PATH, CLEANED_DATA_PATH)
+    create_feature_dataset(CLEANED_DATA_PATH, FEATURED_DATA_PATH)
 
 
 if __name__ == "__main__":
