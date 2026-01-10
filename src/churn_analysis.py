@@ -4,17 +4,16 @@ import pandas as pd
 
 def compute_churn_metrics(input_path: str, output_dir: str) -> None:
     """
-    Computes churn metrics and saves summary CSV files
+    Reads featured customer dataset and computes churn metrics
+    by different customer segments. Outputs summary CSV files
     for dashboard visualizations.
     """
 
     df = pd.read_csv(input_path)
 
-    os.makedirs(output_dir, exist_ok=True)
-
-    # -----------------------------
+    # -------------------------------------------------
     # Overall churn KPI
-    # -----------------------------
+    # -------------------------------------------------
     total_customers = len(df)
     churned_customers = (df["Churn"] == "Yes").sum()
     churn_rate = churned_customers / total_customers
@@ -25,47 +24,58 @@ def compute_churn_metrics(input_path: str, output_dir: str) -> None:
         "churn_rate": churn_rate
     }])
 
-    overall_kpi.to_csv(os.path.join(output_dir, "overall_kpi.csv"), index=False)
-
-    # -----------------------------
-    # Churn by Contract
-    # -----------------------------
-    churn_by_contract = (
-        df.groupby("Contract")
-        .apply(lambda x: (x["Churn"] == "Yes").mean())
-        .reset_index(name="churn_rate")
+    overall_kpi.to_csv(
+        os.path.join(output_dir, "overall_kpi.csv"),
+        index=False
     )
 
-    churn_by_contract["customer_count"] = df.groupby("Contract").size().values
+    # -------------------------------------------------
+    # Churn by Contract Type
+    # -------------------------------------------------
+    churn_by_contract = (
+        df.groupby("Contract")
+          .agg(
+              churned_count=("Churn", lambda x: (x == "Yes").sum()),
+              customer_count=("Churn", "size"),
+              churn_rate=("Churn", lambda x: (x == "Yes").mean())
+          )
+          .reset_index()
+    )
 
     churn_by_contract.to_csv(
         os.path.join(output_dir, "churn_by_contract.csv"),
         index=False
     )
 
-    # -----------------------------
+    # -------------------------------------------------
     # Churn by Tenure Group
-    # -----------------------------
+    # -------------------------------------------------
     churn_by_tenure = (
         df.groupby("tenure_group")
-        .apply(lambda x: (x["Churn"] == "Yes").mean())
-        .reset_index(name="churn_rate")
+          .agg(
+              churned_count=("Churn", lambda x: (x == "Yes").sum()),
+              customer_count=("Churn", "size"),
+              churn_rate=("Churn", lambda x: (x == "Yes").mean())
+          )
+          .reset_index()
     )
-
-    churn_by_tenure["customer_count"] = df.groupby("tenure_group").size().values
 
     churn_by_tenure.to_csv(
         os.path.join(output_dir, "churn_by_tenure.csv"),
         index=False
     )
 
-    # -----------------------------
+    # -------------------------------------------------
     # Churn by Payment Method
-    # -----------------------------
+    # -------------------------------------------------
     churn_by_payment = (
         df.groupby("PaymentMethod")
-        .apply(lambda x: (x["Churn"] == "Yes").mean())
-        .reset_index(name="churn_rate")
+          .agg(
+              churned_count=("Churn", lambda x: (x == "Yes").sum()),
+              customer_count=("Churn", "size"),
+              churn_rate=("Churn", lambda x: (x == "Yes").mean())
+          )
+          .reset_index()
     )
 
     churn_by_payment.to_csv(
@@ -73,13 +83,17 @@ def compute_churn_metrics(input_path: str, output_dir: str) -> None:
         index=False
     )
 
-    # -----------------------------
+    # -------------------------------------------------
     # Churn by Multiple Services Flag
-    # -----------------------------
+    # -------------------------------------------------
     churn_by_services = (
         df.groupby("multiple_services_flag")
-        .apply(lambda x: (x["Churn"] == "Yes").mean())
-        .reset_index(name="churn_rate")
+          .agg(
+              churned_count=("Churn", lambda x: (x == "Yes").sum()),
+              customer_count=("Churn", "size"),
+              churn_rate=("Churn", lambda x: (x == "Yes").mean())
+          )
+          .reset_index()
     )
 
     churn_by_services.to_csv(
@@ -87,4 +101,4 @@ def compute_churn_metrics(input_path: str, output_dir: str) -> None:
         index=False
     )
 
-    print("Churn analysis summaries saved to:", output_dir)
+    print("Churn analysis summary CSV files created in:", output_dir)
