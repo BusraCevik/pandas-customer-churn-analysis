@@ -19,7 +19,7 @@ def prepare_data(input_path, output_path):
     missing_before = df.isna().sum()
     print("Missing values before cleaning:\n", missing_before)
 
-
+ 
     df = df.dropna(subset=["TotalCharges"])
 
     missing_after = df.isna().sum()

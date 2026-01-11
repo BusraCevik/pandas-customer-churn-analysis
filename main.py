@@ -29,6 +29,7 @@ FIGURE_PATH = os.path.join( OUTPUT_DIR, 'figures')
 CSV_PATH = os.path.join(OUTPUT_DIR, "csv")
 
 def main():
+
     prepare_data(RAW_DATA_PATH, CLEANED_DATA_PATH)
     create_feature_dataset(CLEANED_DATA_PATH, FEATURED_DATA_PATH)
     compute_churn_metrics(FEATURED_DATA_PATH, CSV_PATH)
