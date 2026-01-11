@@ -104,11 +104,13 @@ pandas-customer-churn-analysis/
 │
 ├── src/
 │   ├── data_preparation.py
+│   ├── dashboard.py
 │   ├── feature_engineering.py
 │   ├── churn_analysis.py
 │   └── visualization.py
 │
 ├── docs/
+│   ├── demo.gif
 │   └── index.html          # Interactive dashboard
 │
 ├── main.py                 # End-to-end pipeline execution

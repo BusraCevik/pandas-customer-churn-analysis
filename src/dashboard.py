@@ -33,7 +33,7 @@ def build_churn_dashboard(csv_dir: str, featured_csv_path: str, output_html_path
     churn_rate = round((churned_customers / total_customers) * 100, 2)
 
     # -----------------------------
-    # Figure (NO DROPDOWN INSIDE)
+    # Figure
     # -----------------------------
     fig = go.Figure()
 
