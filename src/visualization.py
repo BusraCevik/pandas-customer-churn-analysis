@@ -179,7 +179,7 @@ def _generate_dashboard_html(doc_path: str):
 <script>
 const chartMap = {
     contract: {
-        img: "/outputs/figures/churn_by_contract.png",
+        img: "03-pandas-customer-churn-analysis/outputs/figures/churn_by_contract.png",
         csv: "/outputs/csv/churn_by_contract.csv"
     },
     tenure: {
