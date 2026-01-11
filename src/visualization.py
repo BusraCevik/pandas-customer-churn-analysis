@@ -167,7 +167,7 @@ def _generate_dashboard_html(doc_path: str):
 </select>
 
 <div>
-    <img id="chartImage" src="../outputs/figures/churn_by_contract.png" alt="chart">
+    <img id="chartImage" src="/outputs/figures/churn_by_contract.png" alt="chart">
 </div>
 
 <div class="stats-box" id="statsBox">
@@ -179,20 +179,20 @@ def _generate_dashboard_html(doc_path: str):
 <script>
 const chartMap = {
     contract: {
-        img: "../outputs/figures/churn_by_contract.png",
-        csv: "../outputs/csv/churn_by_contract.csv"
+        img: "/outputs/figures/churn_by_contract.png",
+        csv: "/outputs/csv/churn_by_contract.csv"
     },
     tenure: {
-        img: "../outputs/figures/churn_by_tenure.png",
-        csv: "../outputs/csv/churn_by_tenure.csv"
+        img: "/outputs/figures/churn_by_tenure.png",
+        csv: "/outputs/csv/churn_by_tenure.csv"
     },
     payment: {
-        img: "../outputs/figures/churn_by_payment.png",
-        csv: "../outputs/csv/churn_by_payment.csv"
+        img: "/outputs/figures/churn_by_payment.png",
+        csv: "/outputs/csv/churn_by_payment.csv"
     },
     services: {
-        img: "../outputs/figures/churn_by_services.png",
-        csv: "../outputs/csv/churn_by_services.csv"
+        img: "/outputs/figures/churn_by_services.png",
+        csv: "/outputs/csv/churn_by_services.csv"
     }
 };
 
@@ -245,6 +245,8 @@ select.addEventListener("change", (e) => {
     os.makedirs(os.path.dirname(doc_path), exist_ok=True)
     with open(doc_path, "w", encoding="utf-8") as f:
         f.write(html_content)
+
+
 
 
 # -------------------------------------------------
