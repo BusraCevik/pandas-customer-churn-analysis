@@ -30,8 +30,7 @@ The project provides:
 
 ## 📊 Dataset
 
-**Telco Customer Churn Dataset (Kaggle)**  
-https://www.kaggle.com/datasets/blastchar/telco-customer-churn
+[**Telco Customer Churn Dataset (Kaggle)**](https://www.kaggle.com/datasets/blastchar/telco-customer-churn)
 
 The dataset contains customer-level records for a telecom company.
 
