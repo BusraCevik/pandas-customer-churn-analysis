@@ -14,9 +14,6 @@ GRID_COLOR = "#E6F2F2"
 FIG_SIZE = (8, 5)
 
 
-# -------------------------------------------------
-# Internal helper
-# -------------------------------------------------
 def _save_bar_plot(df, x_col, y_col, title, ylabel, save_path):
     plt.figure(figsize=FIG_SIZE)
 
@@ -24,7 +21,8 @@ def _save_bar_plot(df, x_col, y_col, title, ylabel, save_path):
         df[x_col],
         df[y_col],
         color=MAIN_COLOR,
-        edgecolor=DARK_COLOR
+        edgecolor=DARK_COLOR,
+        width=0.45
     )
 
     plt.title(title, color=DARK_COLOR)
@@ -53,9 +51,6 @@ def _save_bar_plot(df, x_col, y_col, title, ylabel, save_path):
     plt.close()
 
 
-# -------------------------------------------------
-# Plot generators
-# -------------------------------------------------
 def _plot_churn_by_contract(csv_dir, fig_dir):
     df = pd.read_csv(os.path.join(csv_dir, "churn_by_contract.csv"))
 
@@ -115,9 +110,6 @@ def _plot_churn_by_services(csv_dir, fig_dir):
     )
 
 
-# -------------------------------------------------
-# Public API (called from main)
-# -------------------------------------------------
 def generate_visualizations(csv_dir: str, fig_dir: str, doc_path: str) -> None:
     os.makedirs(fig_dir, exist_ok=True)
 
@@ -126,7 +118,4 @@ def generate_visualizations(csv_dir: str, fig_dir: str, doc_path: str) -> None:
     _plot_churn_by_payment(csv_dir, fig_dir)
     _plot_churn_by_services(csv_dir, fig_dir)
 
-
     print("Visualization files created in:", fig_dir)
-
-
