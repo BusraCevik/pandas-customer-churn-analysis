@@ -59,7 +59,7 @@ def create_feature_dataset(input_path: str, output_path: str) -> None:
         if row["StreamingMovies"] == "Yes":
             count += 1
 
-        return 1 if count >= 3 else 0
+        return 1 if count >= 2 else 0
 
     df["multiple_services_flag"] = df.apply(has_multiple_services, axis=1)
 
