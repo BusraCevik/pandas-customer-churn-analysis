@@ -33,7 +33,7 @@ def main():
     create_feature_dataset(CLEANED_DATA_PATH, FEATURED_DATA_PATH)
     compute_churn_metrics(FEATURED_DATA_PATH, CSV_PATH)
     generate_visualizations(CSV_PATH, FIGURE_PATH, DOC_DIR)
-    build_churn_dashboard(CSV_PATH, DOC_DIR)
+    build_churn_dashboard(CSV_PATH, FEATURED_DATA_PATH, DOC_DIR)
 
 
 if __name__ == "__main__":
