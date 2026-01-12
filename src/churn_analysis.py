@@ -12,7 +12,7 @@ def compute_churn_metrics(input_path: str, output_dir: str) -> None:
     df = pd.read_csv(input_path)
 
     # -------------------------------------------------
-    # Overall churn KPI
+    # Overall churn KPI(Key Performance Indicator)
     # -------------------------------------------------
     total_customers = len(df)
     churned_customers = (df["Churn"] == "Yes").sum()
