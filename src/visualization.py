@@ -110,7 +110,7 @@ def _plot_churn_by_services(csv_dir, fig_dir):
     )
 
 
-def generate_visualizations(csv_dir: str, fig_dir: str, doc_path: str) -> None:
+def generate_visualizations(csv_dir: str, fig_dir: str) -> None:
     os.makedirs(fig_dir, exist_ok=True)
 
     _plot_churn_by_contract(csv_dir, fig_dir)
